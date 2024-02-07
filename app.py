@@ -31,7 +31,8 @@ def login():
     error = None
 
     if request.method == 'POST':
-        user = request.form['username']
+        
+        user = request.form['email']
         passwd = request.form['password']
         if user in users and users[user] == passwd:
             return redirect('/')
