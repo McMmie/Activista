@@ -3,7 +3,7 @@
 """
 import sqlite3
 import click
-from flask import current app, g
+from flask import current_app, g
 from flask.cli import with_appcontext
 
 
@@ -46,3 +46,7 @@ def init_db_command():
     """ Clear any existing data and create new tables. """
     init_db()
     click.echo('Initializing the database')
+
+def init_app(app):
+    app.teardown_appcontext(close_db)
+    app.cli.add_command(init_db_command)
