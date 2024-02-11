@@ -1,4 +1,4 @@
-# My Activity Tracker Web App
+# Activista
 
 This is a simple web application built with Flask to help you keep track of your activities. The app allows you to add and view activities, storing them in a database.
 
