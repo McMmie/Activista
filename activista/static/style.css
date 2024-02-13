@@ -41,7 +41,7 @@ body {
 }
 .welcomes{
     display: flex;
-    background-color: rgba(205, 178, 211, 0.971);
+    background-color: #5277d44b;
     justify-content: space-between;
     margin: 5px;
     width: 85%;
@@ -85,6 +85,7 @@ body {
 }
 .username .useraccount {
     display: block;
+}
 .username .useraccount .sub-items {
 	background: #fff;
 	text-decoration: none;
@@ -93,4 +94,4 @@ body {
 }
 .username .useraccount .sub-items a{
 	padding-left: 80px;
-
+}
