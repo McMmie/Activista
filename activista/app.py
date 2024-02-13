@@ -35,7 +35,7 @@ def login():
         user = request.form['email']
         passwd = request.form['password']
         if user in users and users[user] == passwd:
-            return redirect('/')
+            return render_template('index.html', user='tester', notifications='25', streaks='500')
 
         else:
             error = 'Invalid user credentials!'

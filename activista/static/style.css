@@ -53,7 +53,7 @@ body {
 }
 .rightpanel {
     display: inline-flex;
-    place-content: center;
+    place-items: center;
     height: 100%;
     width: 400px;
     color: aliceblue;
@@ -79,6 +79,18 @@ body {
     margin-right: 0px;
     border-bottom:solid 2px rgba(133, 121, 154, 0.829);
 }
+
 .username {
     width: 30%;
 }
+.username .useraccount {
+    display: block;
+.username .useraccount .sub-items {
+	background: #fff;
+	text-decoration: none;
+	color: whitesmoke;
+	font: 1em;
+}
+.username .useraccount .sub-items a{
+	padding-left: 80px;
+

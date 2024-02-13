@@ -6,15 +6,23 @@
     <title>Activista</title>
     <link rel="icon" href='/images/logo-firebase.svg'>
     <link rel="stylesheet" href="/static/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="nav">            
         <div class="user">
             <div class="welcome"><h2 class="logo"><span><ion-icon name="logo-firebase"></ion-icon></span>ACTIvista</h2></div>
             <div class="username"></div>
-            <div class="notif"><h4>notifications</h4></div>
-        <div class="streak"><h4>streaks</h4></div>
-        <div class="useraccount">user</div>
+	    <div class="notif"><h4>notifications</h4><div>{{ notifications }}</div></div>
+	    <div class="streak"><h4>streak {{ streaks }}</h4></div>
+	    <div class="useraccount"><a href='#'> {{ user }}</a>
+		    <div class='sub-menu'>
+			    <a href='#' class='sub-items'>Profile</a>
+			    <a href='#' class='sub-items'>somelink</a>
+			    <a href='#' class='sub-items'>logout</a>
+
+		    </div>
+	    </div>
     </div>
        
     
@@ -34,7 +42,16 @@
        </div>
         </div>
     </div>
+    <script src="/static/script.js"></script>
+    <script>
+	/*$(document).ready(function () {
+		alert("good to go");
+		$("#useraccount").click(function () {
+			$(this).toggle(10);
+		});
+	});
+	</script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

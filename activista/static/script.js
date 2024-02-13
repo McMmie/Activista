@@ -23,3 +23,4 @@ iconClose.addEventListener('click', ()=> {
     wrapper.classList.remove('active-popup');
     background.classList.remove('active-background');
 });
+
