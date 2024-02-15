@@ -40,7 +40,7 @@ body {
     margin-right: -1px;
 }
 .welcomes{
-    display: flex;
+    display: block;
     background-color: #5277d44b;
     justify-content: space-between;
     margin: 5px;
@@ -51,6 +51,14 @@ body {
     border-color: black;
 
 }
+.cta-button {
+    text-decoration: none;
+    background: #fff;
+    color: black;
+    padding:50px
+    margin: 50px;
+    border-radius: 10px;
+
 .rightpanel {
     display: inline-flex;
     place-items: center;
