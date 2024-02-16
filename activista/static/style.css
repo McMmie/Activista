@@ -58,7 +58,39 @@ body {
     padding:50px
     margin: 50px;
     border-radius: 10px;
+}
 
+/* Style for cta-button */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color, you can change it to any desired color */
+    color: #fff; /* White color for text */
+    text-decoration: none; /* Remove default underline */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Style for post */
+.post {
+    margin-bottom: 20px;
+}
+
+/* Style for post title */
+.post header h1 {
+    color: #333; /* Dark color for title */
+}
+
+/* Style for post body */
+.post .body {
+    color: #666; /* Slightly lighter color for body text */
+}
+
+ /* Style for hr */
+hr {
+     border: 0;
+     border-top: 1px solid #ccc; /* Gray color for horizontal rule */
+     margin: 20px 0; /* Add space above and below hr */
+}
 .rightpanel {
     display: inline-flex;
     place-items: center;
