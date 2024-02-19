@@ -69,7 +69,7 @@ Run the Flask app:
 
 bash
 Copy code
-python app.py
+python home.py
 Access the app in your web browser at http://127.0.0.1:5000/.
 
 Contributing
