@@ -91,8 +91,7 @@
 
   .background.active-background {
     background: none;
-    background-color: rgba(131, 88, 142, 0.393);
-    background-color: #5277d44b;
+    background-color: #fff;
     transform: none;
     transition: .2s ease;
   }

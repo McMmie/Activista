@@ -6,7 +6,7 @@ define a blueprint and register it in the app factory
 from flask import (
         Blueprint, flash, g, redirect, render_template, request, url_for)
 from werkzeug.exceptions import abort
-'''from activista.auth import login_required'''
+from activista.auth import login_required
 from activista.db import get_db
 
 bp = Blueprint('home', __name__)
@@ -25,10 +25,13 @@ def index():
     db = get_db()
     posts = db.execute(
             'SELECT title, body  FROM tasks ORDER BY created ASC').fetchall()
-    return render_template('index.html', posts=posts)
+
+    username = db.execute(
+            'SELECT username FROM users')
+    return render_template('index.html', posts=posts, username='test user')
 
 @bp.route('/new', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def create():
     """
     creats a new task

@@ -7,71 +7,206 @@
     <link rel="icon" href='/images/logo-firebase.svg'>
     <link rel="stylesheet" href="/static/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/887c53e8cf.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="nav">            
+    <header>
+        <h2 class="logo"><span><ion-icon name="logo-firebase"></ion-icon></span>
+            <a href="/home" class="logo">ACTIvista</a></h2>
+        <nav class="navigation">
+            <!-- <a href="./landing_page.html">Home</a> -->
+            <input type="text" class="search" placeholder="Search">
+            <a href="#">
+                <ion-icon name="notifications-outline" size="large"></ion-icon>
+            </a>
+            <a href="#" class="streak"><ion-icon name="flame-sharp" size="large"></ion-icon></a>
+	    {% if g.user %}
+            <button class="btn-user">
+                <ion-icon name="person-circle" size="large"></ion-icon>
+            </button>
+	    {% else %}
+		<button class="login">
+                    <p><a href="/auth/login" class="login-link">Log in</a></p>
+                </button>
+
+	    {% endif %}
+        </nav>
+    </header>
+    <!--  <div class="nav">            
         <div class="user">
             <div class="welcome"><h2 class="logo"><span><ion-icon name="logo-firebase"></ion-icon></span>ACTIvista</h2></div>
-            <div class="username"></div>
-	    <div class="notif"><h4>notifications</h4><div>{{ notifications }}</div></div>
-	    <div class="streak"><h4>streak {{ streaks }}</h4></div>
-	    <div class="useraccount"><a href='#'> {{ user }}</a>
+            <div class="username">
+                <input type="text" class="search">
+            </div>
+	    <div class="notif"><h4><img src="/images/1448809128_bell_44444.ico" alt=""></h4><div></div></div>
+	    <div class="streak"><h4></h4></div>
+	    <div class="useraccount"><a href='#'><img src="/images/account_avatar_face_man_people_profile_user_icon_123197.ico" alt=""></a>
 		    <div class='sub-menu'>
 			    <a href='#' class='sub-items'>Profile</a>
 			    <a href='#' class='sub-items'>somelink</a>
 			    <a href='#' class='sub-items'>logout</a>
-
 		    </div>
 	    </div>
-    </div>
+	    </div> -->
        
     
     <div class="home">
-        <div class="sidepanel">
-            <div class="dashboard"><h2>dashboard</h2></div>
-            <div class="activity"><h2>activity</h2></div>
-            <div class="space"></div>
-            <div class="settings"><h2>settings</h2></div>
+        <div class="leftpanel">
+            <div class="sp"></div>
+            <div class="dashboard">
+                <ul class="options">
+                    <i><h2>Dashboard</h2>
+                    </i>
+                    <i ><h2>Tasks</h2></i>
+                    <i><h2>Projects</h2></i>
+                    <i><h2>Workspaces</h2></i>
+                    <i><h2>Settings</h2></i>
+		    <div class="logout"> 
+			    <i><ion-icon name="log-out-outline" size="large"></ion-icon> <a href="/auth/logout" >logout </a></i>
+		    </div>
+                </ul>
+                
+            </div>
         </div>
-        <div class="welcomes">
+        <div class="center-panel">
+            <div class="sp"></div>
+            <div class="tasks">
+                
+                {% block content %}
+		{% if g.user %}
+                {% if posts %}
+                  {% for post in posts %}
+                    <article class="post">
+                        <div>
+                          <h1>{{ post['title'] }}</h1>
+                        </div>
+                     <p class="body">{{ post['body'] }}</p>
+                    </article>
+                    {% if not loop.last %}
+                      <hr>
+                    {% endif %}
+                  {% endfor %}
+			<a href="/new" class="cta-button">+ Create</a>
+		{% else %}
+		                    
+                    <div class="create-btn">
+                        <div class="beach"><img src="activista/images/27beach_115458.png" alt=""></div>
+                        <h1> too much silence...? </h1>
+                        <a href="/new" class="cta-button">+ Create</a>
+                    </div>	
 
-    <a href="/new" class="cta-button"> Create task</a>
-{% block content %}
-{% if posts %}
-  {% for post in posts %}
-    <article class="post">
-      <header>
-        <div>
-          <h1>{{ post['title'] }}</h1>
+		  {% endif %}
+                  {% else %}
+		<!-- <div class="login">
+                    <p><a href="/auth/login" class="login-link">Log In</a></p>
+		</div> -->
+                   <div class="create-btn">
+                        <div class="beach"><img src="/images/27beach_115458.png" alt=""></div>
+                        <h1> too much silence...? </h1>
+                        <a href="/auth/login" class="cta-button">+ Create</a>
+                    </div>	
+
+		    {% endif %}
+
+		    {% endblock %}
+            </div>
         </div>
-     </header>
-     <p class="body">{{ post['body'] }}</p>
-    </article>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
-  {% else %}
-    <h1> NO TASKS! </h1>
+        <div class="rightpanel">
+            <div class="sp"></div>
+            <div class="calendar">
+                <p>Calendar</p>
+                <div class="days">
+                    <div class="today"><h4>Wed, Feb 21</h4></div>
+                    <div class="weekdays">
+                        <div class="sun">S
+                            <div class="dt">
+                                <ul>
+                                    <i>28</i>
+                                    <i>4</i>
+                                    <i>11</i>
+                                    <i>18</i>
+                                    <i>25</i>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mon">M
+                            <div class="dt">
+                                <ul>
+                                    <i>29</i>
+                                    <i>5</i>
+                                    <i>12</i>
+                                    <i>19</i>
+                                    <i>26</i>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tue">T
+                            <div class="dt">
+                                <ul>
+                                    <i>30</i>
+                                    <i>6</i>
+                                    <i>13</i>
+                                    <i>20</i>
+                                    <i>27</i>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="wen">W
+                            <div class="dt">
+                                <ul>
+                                    <i>31</i>
+                                    <i>7</i>
+                                    <i>14</i>
+                                    <i>21</i>
+                                    <i>28</i>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="thur">T
+                            <div class="dt">
+                                <ul>
+                                    <i>1</i>
+                                    <i>8</i>
+                                    <i>15</i>
+                                    <i>22</i>
+                                    <i>29</i>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="fri">F
+                            <div class="dt">
+                                <ul>
+                                    <i>2</i>
+                                    <i>9</i>
+                                    <i>16</i>
+                                    <i>23</i>
+                                    <i>1</i>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sat">S
+                            <div class="dt">
+                                <ul>
+                                    <i>3</i>
+                                    <i>10</i>
+                                    <i>17</i>
+                                    <i>24</i>
+                                    <i>2</i>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+        <div class="news">
+           <p> upcoming events</p>
+           <div>there is nothing here!</div>
+        </div>
 
-{% endif %}
-{% endblock %}
-        
-    </div>
-    <div class="rightpanel">
-        <div class="calendar"><h4>Calendar</h4></div>
-       </div>
         </div>
     </div>
     <script src="/static/script.js"></script>
-    <script>
-	/*$(document).ready(function () {
-		alert("good to go");
-		$("#useraccount").click(function () {
-			$(this).toggle(10);
-		});
-	}); */
-	</script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

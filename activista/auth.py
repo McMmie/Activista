@@ -72,7 +72,21 @@ def login():
     
     return render_template('/login.html')
 
-@bp.route('logout')
+@bp.before_app_request
+def load_user():
+    """
+    loads user info after loging in
+    """
+    user_id = session.get('user_id')
+
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = get_db().execute(
+                'SELECT * FROM users WHERE user_id = ?', (user_id,)
+                ).fetchone()
+
+@bp.route('/logout')
 def logout():
     """
     logs out a user
@@ -80,15 +94,15 @@ def logout():
     session.clear()
     return redirect('/')
 
-'''def login_required(view):
+def login_required(view):
     """
     require authentication in other views
     """
     @functools.wraps(view)
     def wrapped_view(**kwargs):
-        if g.users is None:
-            return redirect(url_for('login'))
+        if g.user is None:
+            return redirect(url_for('auth.login'))
 
         return view(**kwargs)
 
-    return wrapped_view'''
+    return wrapped_view
